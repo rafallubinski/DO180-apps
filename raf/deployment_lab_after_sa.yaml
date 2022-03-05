@@ -1,0 +1,294 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "4"
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"wordpress:5.7-php7.4-apache"},"fieldPath":"spec.template.spec.containers[?(@.name==\"wordpress\")].image"}]'
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2022-03-03T10:54:39Z"
+  generation: 4
+  labels:
+    app: wordpress
+    app.kubernetes.io/component: wordpress
+    app.kubernetes.io/instance: wordpress
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers:
+              k:{"name":"wordpress"}:
+                f:image: {}
+    manager: openshift-controller-manager
+    operation: Update
+    time: "2022-03-03T10:54:45Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:image.openshift.io/triggers: {}
+          f:openshift.io/generated-by: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:deployment: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:openshift.io/generated-by: {}
+            f:labels:
+              .: {}
+              f:deployment: {}
+          f:spec:
+            f:containers:
+              k:{"name":"wordpress"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"WORDPRESS_DB_DATABASE"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"WORDPRESS_DB_HOST"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WORDPRESS_DB_NAME"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WORDPRESS_DB_PASSWORD"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"WORDPRESS_DB_USER"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"WORDPRESS_EMAIL"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WORDPRESS_PASSWORD"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WORDPRESS_TITLE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WORDPRESS_URL"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WORDPRESS_USER"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":80,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:protocol: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/var/www/html"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"wordpress-volume-1"}:
+                .: {}
+                f:emptyDir: {}
+                f:name: {}
+    manager: oc
+    operation: Update
+    time: "2022-03-03T10:56:49Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:serviceAccount: {}
+            f:serviceAccountName: {}
+    manager: kubectl-set
+    operation: Update
+    time: "2022-03-03T11:03:31Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2022-03-03T11:03:35Z"
+  name: wordpress
+  namespace: authorization-review
+  resourceVersion: "1390537"
+  selfLink: /apis/apps/v1/namespaces/authorization-review/deployments/wordpress
+  uid: ca0da7f5-739f-4e4f-bf4f-3af9db68ff5a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      deployment: wordpress
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        deployment: wordpress
+    spec:
+      containers:
+      - env:
+        - name: WORDPRESS_DB_HOST
+          value: mysql
+        - name: WORDPRESS_DB_NAME
+          value: wordpress
+        - name: WORDPRESS_EMAIL
+          value: student@redhat.com
+        - name: WORDPRESS_PASSWORD
+          value: redhat123
+        - name: WORDPRESS_TITLE
+          value: auth-review
+        - name: WORDPRESS_URL
+          value: wordpress-review.apps.ocp4.example.com
+        - name: WORDPRESS_USER
+          value: wpuser
+        - name: WORDPRESS_DB_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: database
+              name: review-secret
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: review-secret
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              key: user
+              name: review-secret
+        image: quay.io/redhattraining/wordpress@sha256:0cf952b01efd71e94c82c7e4d1c4d4daf9276fb60a9696b2113a9f701c1ecc6b
+        imagePullPolicy: IfNotPresent
+        name: wordpress
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: wordpress-volume-1
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: wordpress-sa
+      serviceAccountName: wordpress-sa
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: wordpress-volume-1
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2022-03-03T11:03:34Z"
+    lastUpdateTime: "2022-03-03T11:03:34Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-03-03T10:54:39Z"
+    lastUpdateTime: "2022-03-03T11:03:35Z"
+    message: ReplicaSet "wordpress-d8cdd67c9" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 4
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
